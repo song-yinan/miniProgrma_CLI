@@ -5,6 +5,7 @@
   + 如果此脚手架不满足需求，欢迎各位提到Issues
 ## 项目
     git clone https://github.com/nanxiaodi/miniProgrma_CLI.git
+    cnpm install 
     在src目录下分别有 project.dev.config.json project.prod.config.json project.uat.config.json 分别对应开发，生产，uat小程序 project.config.json配置
     gulp build --env dev (此命令用于开发，生成devDist,加入了热更新功能)
     gulp build --env prod (此命令用于打包生产包，生成prodDist目录，无热更新功能)
