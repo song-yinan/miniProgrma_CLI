@@ -7,8 +7,10 @@ const rename = require('gulp-rename')
 // import postcss from 'gulp-postcss'
 const del = require('del')
 const gulp = require('gulp')
+// const chokidar = require('chokidar');
 const replace = require('gulp-replace')
 const minimist = require('minimist')
+const watch = require("gulp-watch");
 // import imagemin from 'gulp-imagemin'
 // import qiniu from 'gulp-qiniu'
 // import gulpif from 'gulp-if'
@@ -21,6 +23,7 @@ const  gutil = require('gulp-util')
 // import argv from 'yargs'
 
 let outputPath = path.join(__dirname, 'dist/')
+let configPath = path.join(__dirname, 'dist/config')
 // const copyFile = ['!node_modules/']
 const paths = {
 	// styles: {
@@ -36,7 +39,7 @@ const paths = {
 	// 	dest: outputPath
 	// },
 	copy: {
-		src: ['src/**', '!src/project.dev.config.json', '!src/icon/fonts/**', '!src/assets/images/**'],
+		src: ['src/**', '!src/project.dev.config.json','!src/config/**'],
 		dest: outputPath
 	},
 
@@ -50,27 +53,42 @@ let knownOptions = {
 
 const config = minimist(process.argv.slice(2), knownOptions);
 // 更新环境
-if(config.env == 'prod') {
-  outputPath = path.join(__dirname, 'prodDist/')
-  configjsName = '_config_prod.js'
-  projectJsonName= 'project.prod.config.json'
-  configPath=  path.join(__dirname, 'prodDist/config')
+const switchENV = (cb) => {
+  let projectJsonName = 'project.dev.config.json';
+  let configjsName = ''
+  if(config.env == 'prod') {
+     outputPath = path.join(__dirname, 'prodDist/')
+     configjsName = '_config_prod.js'
+     projectJsonName= 'project.prod.config.json'
+     configPath=  path.join(__dirname, 'prodDist/config')
 
-}else if(config.env == 'dev') {
- outputPath = path.join(__dirname, 'devDist/')
- configjsName = '_config_dev.js'
- projectJsonName = 'project.dev.config.json'
- configPath=  path.join(__dirname, 'devDist/config')
-}else if(config.env == 'uat') {
- outputPath = path.join(__dirname, 'uatDist/')
- projectJsonName = 'project.uat.config.json'
- projectJsonName = 'project.uat.config.json'
- configPath=  path.join(__dirname, 'uatDist/config')
-}else {
- utputPath = path.join(__dirname, 'prodDist/')
-  configjsName = '_config_prod.js'
-  projectJsonName= 'project.prod.config.json'
-  configPath=  path.join(__dirname, 'prodDist/config')
+  }else if(config.env == 'dev') {
+    outputPath = path.join(__dirname, 'devDist/')
+    configjsName = '_config_dev.js'
+    projectJsonName = 'project.dev.config.json'
+    configPath=  path.join(__dirname, 'devDist/config')
+  }else if(config.env == 'uat') {
+    outputPath = path.join(__dirname, 'uatDist/')
+    projectJsonName = 'project.uat.config.json'
+    projectJsonName = 'project.uat.config.json'
+    configPath=  path.join(__dirname, 'uatDist/config')
+  }else {
+    utputPath = path.join(__dirname, 'prodDist/')
+     configjsName = '_config_prod.js'
+     projectJsonName= 'project.prod.config.json'
+     configPath=  path.join(__dirname, 'prodDist/config')
+  }
+  console.log(outputPath)
+ 
+  gulp
+		.src([`src/${projectJsonName}`], { base: 'src' })
+    .pipe(rename('project.config.json'))
+    .pipe(gulp.dest(outputPath))
+  gulp
+		.src([`src/config/${configjsName}`], { base: 'src' })
+    .pipe(rename('index.js')) 
+    .pipe(gulp.dest(configPath))
+    cb()
 }
 
 // 清理打包目录
@@ -91,7 +109,8 @@ const copy = (cb) => {
 }
 	
 const watchFiles = () => {
-	gulp.watch(['src/**'],function(){
+  console.log('执行监听')
+	watch(['src/**'],function(){
     console.log('更新代码')
     copy();
   })
