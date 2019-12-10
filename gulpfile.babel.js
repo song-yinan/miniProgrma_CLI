@@ -50,28 +50,27 @@ let knownOptions = {
 
 const config = minimist(process.argv.slice(2), knownOptions);
 // 更新环境
-const switchENV = (cb) => {
-  let projectJsonNmae = 'project.dev.config.json';
-  if(config.env == 'prod') {
-     outputPath = path.join(__dirname, 'prodDist/')
-     projectJsonNmae = 'project.prod.config.json'
+if(config.env == 'prod') {
+  outputPath = path.join(__dirname, 'prodDist/')
+  configjsName = '_config_prod.js'
+  projectJsonName= 'project.prod.config.json'
+  configPath=  path.join(__dirname, 'prodDist/config')
 
-  }else if(config.env == 'dev') {
-    outputPath = path.join(__dirname, 'devDist/')
-    projectJsonNmae = 'project.dev.config.json'
-  }else if(config.env == 'uat') {
-    outputPath = path.join(__dirname, 'uatDist/')
-    projectJsonNmae = 'project.uat.config.json'
-  }else {
-    outputPath = path.join(__dirname, 'dist/')
-    projectJsonNmae = 'project.dev.config.json'
-  }
-  console.log(outputPath)
-  gulp
-		.src([`src/${projectJsonNmae}`], { base: 'src' })
-    .pipe(rename('project.config.json'))
-    .pipe(gulp.dest(outputPath))
-    cb()
+}else if(config.env == 'dev') {
+ outputPath = path.join(__dirname, 'devDist/')
+ configjsName = '_config_dev.js'
+ projectJsonName = 'project.dev.config.json'
+ configPath=  path.join(__dirname, 'devDist/config')
+}else if(config.env == 'uat') {
+ outputPath = path.join(__dirname, 'uatDist/')
+ projectJsonName = 'project.uat.config.json'
+ projectJsonName = 'project.uat.config.json'
+ configPath=  path.join(__dirname, 'uatDist/config')
+}else {
+ utputPath = path.join(__dirname, 'prodDist/')
+  configjsName = '_config_prod.js'
+  projectJsonName= 'project.prod.config.json'
+  configPath=  path.join(__dirname, 'prodDist/config')
 }
 
 // 清理打包目录
