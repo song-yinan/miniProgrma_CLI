@@ -10,3 +10,13 @@
     gulp build --env dev (此命令用于开发，生成devDist,加入了热更新功能)
     gulp build --env prod (此命令用于打包生产包，生成prodDist目录，无热更新功能)
     gulp build --env uat (此命令用于打包uat包，生成uatDist目录，无热更新功能)
+
+### 更新内容 2020/1/19
+  + 新增局部更新代码
+  + 新增全局管理状态 store
+    ```
+    const app = getApp();
+    app.store.getState() // 获取全局变量
+    app.store.setState({}) // 修改全局变量 
+    ```
+  + 新增建立watch方法 调用app.js的setWatch方法

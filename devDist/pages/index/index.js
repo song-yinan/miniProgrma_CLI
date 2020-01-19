@@ -16,9 +16,7 @@ Page({
     })
   },
   onLoad: function () {
-   app.store.setData({
-     
-   })
+  
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -26,6 +24,11 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  goDemo:function() {
+    wx.navigateTo({
+      url: '/pages/demo/demo',
     })
   }
 })
