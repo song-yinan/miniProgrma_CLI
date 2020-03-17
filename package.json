@@ -63,7 +63,7 @@
     "chokidar": "^3.3.0",
     "cos-js-sdk-v5": "^0.5.22",
     "fs": "0.0.1-security",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "tim-js-sdk": "^2.3.2"
   }
 }
