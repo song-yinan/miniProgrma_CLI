@@ -61,7 +61,7 @@
   "dependencies": {
     "async-each": "^1.0.3",
     "chokidar": "^3.3.0",
-    "cos-js-sdk-v5": "^0.5.22",
+    "cos-js-sdk-v5": "^1.4.6",
     "fs": "0.0.1-security",
     "minimist": "^1.2.0",
     "tim-js-sdk": "^2.3.2"
