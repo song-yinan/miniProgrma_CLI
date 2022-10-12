@@ -774,6 +774,11 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
+"@xmldom/xmldom@^0.8.2":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.3.tgz#beaf980612532aa9a3004aff7e428943aeaa0711"
+  integrity sha512-Lv2vySXypg4nfa51LY1nU8yDAGo/5YwF+EY/rUZgIbfvwVARcd67ttCM8SMsTeJy51YhHYavEq+FS6R0hW9PFQ==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/abbrev/download/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1879,12 +1884,12 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   resolved "https://registry.npm.taobao.org/core-util-is/download/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
-cos-js-sdk-v5@^0.5.22:
-  version "0.5.22"
-  resolved "https://registry.npm.taobao.org/cos-js-sdk-v5/download/cos-js-sdk-v5-0.5.22.tgz?cache=0&sync_timestamp=1575029157239&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcos-js-sdk-v5%2Fdownload%2Fcos-js-sdk-v5-0.5.22.tgz#ff2d330047e23688afb8d8f64606f1b09d9fb28b"
-  integrity sha1-/y0zAEfiNoivuNj2RgbxsJ2fsos=
+cos-js-sdk-v5@^1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/cos-js-sdk-v5/-/cos-js-sdk-v5-1.4.6.tgz#807b9eb4d8228ec1b6624f5bf71eb1e833930102"
+  integrity sha512-FTUXjBqtADiNk3O5pwiaiDLQRiD2bt5ZQnP+34rfBszG6DqH6oa7FNpQeI7lnTiCvsfIyE/EcsuCBt7VVQpioQ==
   dependencies:
-    xmldom "^0.1.27"
+    "@xmldom/xmldom" "^0.8.2"
 
 cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
   version "2.2.2"
@@ -7864,11 +7869,6 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/wrappy/download/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
-
-xmldom@^0.1.27:
-  version "0.1.31"
-  resolved "https://registry.npm.taobao.org/xmldom/download/xmldom-0.1.31.tgz#b76c9a1bd9f0a9737e5a72dc37231cf38375e2ff"
-  integrity sha1-t2yaG9nwqXN+WnLcNyMc84N14v8=
 
 xregexp@2.0.0:
   version "2.0.0"
